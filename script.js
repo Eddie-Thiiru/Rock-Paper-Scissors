@@ -18,25 +18,34 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
 
     playerSelection = playerSelection.toLowerCase();
-
-    if (playerSelection === one && computerSelection === two) {
-        return "You Loose! Paper beats Rock";
+    let check = playerSelection === one || playerSelection === two || playerSelection === three;
+   
+    if (!check) {
+        alert("Wrong Input!");
+    }else if (playerSelection === one && computerSelection === two) {
+        return "You Loose!";
     } else if (playerSelection === one && computerSelection === three) {
-        return "You Win! Rock beats Scissors";
+        return "You Win!";
     } else if (playerSelection === two && computerSelection === one) {
-        return "You Win! Paper beats Rock";
+        return "You Win!";
     } else if (playerSelection === two && computerSelection === three) {
-        return "You Loose! Scissors beats Paper";
+        return "You Loose!";
     } else if (playerSelection === three && computerSelection === one) {
-        return "You Loose! Rock beats Scissors";
+        return "You Loose!";
     } else if (playerSelection === three && computerSelection === two) {
-        return "You Win! Scissors beats Paper";
-    } else {
+        return "You Win!";
+    }else {
         return "It's a Draw!";
     }
+    
 }
+let playerSelection = prompt("Rock, Paper or Scissors?");
 const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+playRound(playerSelection, computerSelection);
+
+
+
+
 
 
 
