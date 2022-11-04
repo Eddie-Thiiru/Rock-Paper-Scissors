@@ -15,44 +15,43 @@ function getComputerChoice() {
     } 
 } 
 
+function funcPrompt() {
+    let answer = prompt("Rock, Paper or Scissors?");
+    if (answer === null || answer === "") {
+        alert('Please enter an answer.');
+        funcPrompt();
+        return;
+    }
+    answer = answer.toLowerCase();
+    if (answer === one || answer === two || answer === three) {
+        return answer;
+    } else {
+        alert("Please enter correct answer")
+        funcPrompt();
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
 
-    playerSelection = playerSelection.toLowerCase();
-    let check = playerSelection === one || playerSelection === two || playerSelection === three;
-   
-    if (!check) {
-        alert("Wrong Input!");
-    }else if (playerSelection === one && computerSelection === two) {
-        return "You Loose!";
+    if (playerSelection === one && computerSelection === two) {
+        return "You Loose This Round!";
     } else if (playerSelection === one && computerSelection === three) {
-        return "You Win!";
+        return "You Win This Round!";
     } else if (playerSelection === two && computerSelection === one) {
-        return "You Win!";
+        return "You Win This Round!";
     } else if (playerSelection === two && computerSelection === three) {
-        return "You Loose!";
+        return "You Loose This Round!";
     } else if (playerSelection === three && computerSelection === one) {
-        return "You Loose!";
+        return "You Loose This Round!";
     } else if (playerSelection === three && computerSelection === two) {
-        return "You Win!";
+        return "You Win This Round!";
     }else {
         return "It's a Draw!";
     }
-    
+  
 }
-let playerSelection = prompt("Rock, Paper or Scissors?");
+const playerSelection = funcPrompt();
 const computerSelection = getComputerChoice();
-playRound(playerSelection, computerSelection);
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(playRound(playerSelection, computerSelection));
 
 
