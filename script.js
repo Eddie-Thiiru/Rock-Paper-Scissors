@@ -55,3 +55,19 @@ const computerSelection = getComputerChoice();
 console.log(playRound(playerSelection, computerSelection));
 
 
+function playScore() {
+    let valueCount = playRound(playerSelection, computerSelection);
+    let playerValue = 0;
+    let computerValue = 0;
+
+    if (valueCount === "You Win This Round!") {
+        playerValue += 1;
+    } else if (valueCount === "You Loose This Round!") {
+        computerValue += 1;
+    }else {
+        playerValue += 0;
+        computerValue += 0;
+    }  
+}
+const score = playScore();
+
