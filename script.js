@@ -74,3 +74,15 @@ for (let i = 0; i < 5; i++) {
 }
 console.log(playerValue, "player");
 console.log(computerValue, "computer");
+
+function win(playerValue, computerValue) {
+
+    if (playerValue > computerValue) {
+        alert("You Win!")
+    } else if (playerValue < computerValue) {
+        alert("You Loose! Better Luck Next Time")
+    } else {
+        alert("It's a Draw");
+    }
+}
+let winner = win(playerValue, computerValue);
