@@ -5,7 +5,17 @@ const three = "scissors";
 let playerValue = 0;
 let computerValue = 0;
 
+const buttons = document.querySelectorAll("button");
 
+function getPlayerChoice(e){
+    if(e.target.value === "rock") {
+        return one;
+    }else if(e.target.value === "paper") {
+        return two;
+    }else {
+        return three;
+    }
+}
 
     function getComputerChoice() {
         
@@ -19,23 +29,12 @@ let computerValue = 0;
     } 
     let randomNumber =  Math.floor(Math.random() * 100) + 1;
 
-    function funcPrompt() {
-        let answer = prompt("Rock, Paper or Scissors?");
-        if (answer === null || answer === "") {
-            alert('Please enter an answer.');
-            funcPrompt();
-            return;
-        }
-        answer = answer.toLowerCase();
-        if (answer === one || answer === two || answer === three) {
-            return answer;
-        } else {
-            alert("Please enter correct answer")
-            funcPrompt();
-        }
-    }
 
-    function playRound(playerSelection, computerSelection) {
+    function playRound(e) {
+        const playerSelection = getPlayerChoice(e);
+        console.log(playerSelection);
+        const computerSelection = getComputerChoice();
+        console.log(computerSelection)
 
         if (playerSelection === one && computerSelection === two) {
             return "You Loose This Round!";
@@ -53,37 +52,8 @@ let computerValue = 0;
             return "You Draw This Round!";
         }  
     }
-    const playerSelection = funcPrompt();
-    const computerSelection = getComputerChoice();
 
-    function game() {
-        let valueCount = playRound(playerSelection, computerSelection);
 
-        if (valueCount === "You Win This Round!") {
-            console.log("You Win This Round!");
-            return ++playerValue;
-        } else if (valueCount === "You Loose This Round!") {
-            console.log("You Loose This Round!");
-            return ++computerValue;
-        }else {
-            console.log("You Draw This Round");
-            return playerValue,
-                    computerValue;
-        }    
-    }game();
+buttons.forEach(button => button.addEventListener('click', playRound));
 
-console.log(playerValue, "player");
-console.log(computerValue, "computer");
-
-function win(playerValue, computerValue) {
-
-    if (playerValue > computerValue) {
-        alert("You Win!")
-    } else if (playerValue < computerValue) {
-        alert("You Loose! Better Luck Next Time")
-    } else {
-        alert("It's a Draw");
-    }
-}
-let winner = win(playerValue, computerValue);
-
+ 
