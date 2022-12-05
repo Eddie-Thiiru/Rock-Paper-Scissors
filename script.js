@@ -5,7 +5,7 @@ const three = "scissors";
 let playerValue = 0;
 let computerValue = 0;
 
-for (let i = 0; i < 5; i++) {
+
 
     function getComputerChoice() {
         
@@ -71,7 +71,7 @@ for (let i = 0; i < 5; i++) {
                     computerValue;
         }    
     }game();
-}
+
 console.log(playerValue, "player");
 console.log(computerValue, "computer");
 
@@ -86,3 +86,4 @@ function win(playerValue, computerValue) {
     }
 }
 let winner = win(playerValue, computerValue);
+
