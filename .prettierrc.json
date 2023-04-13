@@ -1,0 +1,11 @@
+{
+  "printWidth": 80,
+
+  "semi": true,
+
+  "useTabs": false,
+
+  "trailingComma": "none",
+
+  "endOfLine": "auto"
+}
