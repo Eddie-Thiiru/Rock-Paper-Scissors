@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-size: 1rem;
+  background-color: #ffedd5;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 2fr 50px 5fr 2fr;
+  justify-items: center;
+}
+
+.container,
+h1,
+.container > div {
+  padding: 25px;
+}
+
+h1,
+.game-status {
+  grid-column: 2/ 3;
+}
+
+.button-container {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.game-points {
+  grid-column: 2/ 3;
+  grid-row: 4 / 5;
+}
