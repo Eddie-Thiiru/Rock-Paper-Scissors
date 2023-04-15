@@ -19,10 +19,20 @@ body {
   justify-items: center;
 }
 
-.container,
 h1,
-.container > div {
+.container,
+.button-container,
+.game-points {
   padding: 25px;
+}
+
+.game-status {
+  padding: 10px;
+}
+
+.game-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 h1,

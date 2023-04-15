@@ -1,23 +1,23 @@
 const buttons = document.querySelectorAll("button");
-const statusContainer = document.querySelector(".game-status");
+const gameStatus = document.querySelector(".game-status");
 const pointsContainer = document.querySelector(".game-points");
 
 const playerPoints = document.createElement("div");
 const computerPoints = document.createElement("div");
-const winner = document.createElement("div");
 
 playerPoints.classList.toggle("player-results");
+playerPoints.textContent = "Player: 0";
 computerPoints.classList.toggle("computer-results");
-winner.classList.toggle("winner");
+computerPoints.textContent = "Computer: 0";
 
 pointsContainer.appendChild(playerPoints);
 pointsContainer.appendChild(computerPoints);
-statusContainer.appendChild(winner);
-
+gameStatus.textContent = "Click To Start";
 let playerScore = 0;
 let computerScore = 0;
 
 function getPlayerChoice(e) {
+  console.log(e.dataset.value);
   if (e.target.value === "rock") {
     return "rock";
   }
@@ -43,7 +43,7 @@ function playRound(e) {
   const playerSelection = getPlayerChoice(e);
   const computerSelection = getComputerChoice();
 
-  winner.textContent = "";
+  gameStatus.textContent = `Player: ${playerSelection} Computer: ${computerSelection}`;
 
   if (playerSelection === "rock" && computerSelection === "paper") {
     computerScore += 1;
@@ -78,11 +78,11 @@ function playRound(e) {
 
   function checkWinner() {
     if (playerScore === 5) {
-      winner.textContent = "You Win!";
+      gameStatus.textContent = "You Win!";
       playerScore = 0;
       computerScore = 0;
     } else if (computerScore === 5) {
-      winner.textContent = "You Loose!";
+      gameStatus.textContent = "You Loose!";
       playerScore = 0;
       computerScore = 0;
     }
