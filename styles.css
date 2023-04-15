@@ -14,8 +14,8 @@ body {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr;
-  grid-template-rows: 2fr 50px 5fr 2fr;
+  grid-template-columns: 1fr minmax(520px, 5fr) 1fr;
+  grid-template-rows: 2fr 50px 4fr 2fr;
   justify-items: center;
 }
 
@@ -38,4 +38,24 @@ h1,
 .game-points {
   grid-column: 2/ 3;
   grid-row: 4 / 5;
+}
+
+button {
+  /* border: none; */
+  border-radius: 20px;
+  background-color: #ffedd5;
+}
+
+img {
+  height: 150px;
+  width: 150px;
+  padding: 10px;
+}
+
+button:last-child > img {
+  transform: rotate(-90deg);
+}
+
+button:hover {
+  background-color: aqua;
 }
