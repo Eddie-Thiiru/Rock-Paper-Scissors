@@ -7,15 +7,16 @@ const playerPoints = document.createElement("div");
 const computerPoints = document.createElement("div");
 
 playerPoints.classList.toggle("player-results");
-playerPoints.textContent = "Player: 0";
+playerPoints.textContent = "Player Score: 0";
 computerPoints.classList.toggle("computer-results");
-computerPoints.textContent = "Computer: 0";
+computerPoints.textContent = "Computer Score: 0";
 
 pointsContainer.appendChild(playerPoints);
 pointsContainer.appendChild(computerPoints);
-gameStatus.textContent = "Click To Start";
+gameStatus.textContent = "5 Points Win! Click To start";
 let playerScore = 0;
 let computerScore = 0;
+let roundNumber = 0;
 
 function showChoices(player, computer) {
   choices.textContent = "";
@@ -24,8 +25,10 @@ function showChoices(player, computer) {
   const computerChoice = document.createElement("div");
   const roundWinner = document.createElement("div");
 
-  playerChoice.textContent = `Player Chooses: ${player}`;
-  computerChoice.textContent = `Computer Chooses: ${computer}`;
+  playerChoice.setAttribute("style", "white-space: pre-wrap");
+  computerChoice.setAttribute("style", "white-space: pre-wrap");
+  playerChoice.textContent = `Player:  ${player}`;
+  computerChoice.textContent = `Computer:  ${computer}`;
   roundWinner.setAttribute("id", "round-winner");
 
   choices.appendChild(playerChoice);
@@ -90,11 +93,11 @@ function playRound(player, computer) {
 
   function checkWinner() {
     if (playerScore === 5) {
-      gameStatus.textContent = "You Win!";
+      gameStatus.textContent = "Player Wins!";
       playerScore = 0;
       computerScore = 0;
     } else if (computerScore === 5) {
-      gameStatus.textContent = "You Loose!";
+      gameStatus.textContent = "Computer Wins!";
       playerScore = 0;
       computerScore = 0;
     }
@@ -107,7 +110,16 @@ buttons.forEach((button) =>
     const player = button.dataset.value;
     const computer = getComputerChoice();
 
-    gameStatus.textContent = "";
+    if (
+      gameStatus.textContent === "Player Wins!" ||
+      gameStatus.textContent === "Computer Wins!"
+    ) {
+      roundNumber = 1;
+    } else {
+      roundNumber += 1;
+    }
+
+    gameStatus.textContent = `Round ${roundNumber}`;
 
     showChoices(player, computer);
     playRound(player, computer);

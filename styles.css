@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DynaPuff&family=Righteous&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +8,9 @@
 body {
   height: 100vh;
   font-size: 1rem;
-  background-color: #ffedd5;
+  font-family: "DynaPuff", cursive;
+  color: #f0f8fb;
+  background-color: #0c1232;
 }
 
 .container {
@@ -19,14 +22,26 @@ body {
   justify-items: center;
 }
 
+h1 {
+  font-size: 4rem;
+}
+
 h1,
+.choices,
 .container,
-.button-container,
-.game-points {
+.game-points,
+.button-container {
   padding: 25px;
 }
 
-.game-status {
+.game-status,
+.game-points {
+  font-size: 1.5rem;
+}
+
+.game-status,
+.choices > div,
+.game-points > div {
   padding: 10px;
 }
 
@@ -38,24 +53,41 @@ h1,
 .button-container {
   grid-column: 2 / 3;
   grid-row: 3 / 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: center;
 }
 
 .choices {
   grid-column: 2/ 3;
   grid-row: 4 / 5;
+  display: grid;
+  grid-template-columns: minmax(210px, 1fr) minmax(210px, 1fr);
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  font-family: "Righteous", cursive;
+  color: #ed9a76;
+}
+
+.choices > div:nth-child(3) {
+  grid-column: 1 / 3;
 }
 
 .game-points {
   grid-column: 2/ 3;
   grid-row: 5 / 6;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr);
+  justify-items: center;
 }
 
 button {
-  /* border: none; */
+  border: none;
   border-radius: 20px;
-  background-color: #ffedd5;
+  background-color: #0c1232;
+  height: 160px;
+  width: 160px;
 }
 
 img {
@@ -69,5 +101,5 @@ button:last-child > img {
 }
 
 button:hover {
-  background-color: aqua;
+  background-color: #b1ccc5;
 }
