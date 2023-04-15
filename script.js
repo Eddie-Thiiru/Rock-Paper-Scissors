@@ -1,5 +1,6 @@
 const buttons = document.querySelectorAll("button");
 const gameStatus = document.querySelector(".game-status");
+const choices = document.querySelector(".choices");
 const pointsContainer = document.querySelector(".game-points");
 
 const playerPoints = document.createElement("div");
@@ -16,15 +17,20 @@ gameStatus.textContent = "Click To Start";
 let playerScore = 0;
 let computerScore = 0;
 
-function getPlayerChoice(e) {
-  console.log(e.dataset.value);
-  if (e.target.value === "rock") {
-    return "rock";
-  }
-  if (e.target.value === "paper") {
-    return "paper";
-  }
-  return "scissors";
+function showChoices(player, computer) {
+  choices.textContent = "";
+
+  const playerChoice = document.createElement("div");
+  const computerChoice = document.createElement("div");
+  const roundWinner = document.createElement("div");
+
+  playerChoice.textContent = `Player Chooses: ${player}`;
+  computerChoice.textContent = `Computer Chooses: ${computer}`;
+  roundWinner.setAttribute("id", "round-winner");
+
+  choices.appendChild(playerChoice);
+  choices.appendChild(computerChoice);
+  choices.appendChild(roundWinner);
 }
 
 function getComputerChoice() {
@@ -39,41 +45,47 @@ function getComputerChoice() {
   return "scissors";
 }
 
-function playRound(e) {
-  const playerSelection = getPlayerChoice(e);
-  const computerSelection = getComputerChoice();
-
-  gameStatus.textContent = `Player: ${playerSelection} Computer: ${computerSelection}`;
+function playRound(player, computer) {
+  const playerSelection = player;
+  const computerSelection = computer;
+  const roundWinner = document.getElementById("round-winner");
 
   if (playerSelection === "rock" && computerSelection === "paper") {
     computerScore += 1;
-    playerPoints.textContent = `Player: ${playerScore}`;
-    computerPoints.textContent = `Computer: ${computerScore}`;
+    roundWinner.textContent = "Paper Beats Rock!";
+    playerPoints.textContent = `Player Score: ${playerScore}`;
+    computerPoints.textContent = `Computer Score: ${computerScore}`;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
     playerScore += 1;
-    playerPoints.textContent = `Player: ${playerScore}`;
-    computerPoints.textContent = `Computer: ${computerScore}`;
+    roundWinner.textContent = "Rock Beats Scissors!";
+    playerPoints.textContent = `Player Score: ${playerScore}`;
+    computerPoints.textContent = `Computer Score: ${computerScore}`;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
     playerScore += 1;
-    playerPoints.textContent = `Player: ${playerScore}`;
-    computerPoints.textContent = `Computer: ${computerScore}`;
+    roundWinner.textContent = "Paper Beats Rock!";
+    playerPoints.textContent = `Player Score: ${playerScore}`;
+    computerPoints.textContent = `Computer Score: ${computerScore}`;
   } else if (playerSelection === "paper" && computerSelection === "scissors") {
     computerScore += 1;
-    playerPoints.textContent = `Player: ${playerScore}`;
-    computerPoints.textContent = `Computer: ${computerScore}`;
+    roundWinner.textContent = "Scissors Beats Paper!";
+    playerPoints.textContent = `Player Score: ${playerScore}`;
+    computerPoints.textContent = `Computer Score: ${computerScore}`;
   } else if (playerSelection === "scissors" && computerSelection === "rock") {
     computerScore += 1;
-    playerPoints.textContent = `Player: ${playerScore}`;
-    computerPoints.textContent = `Computer: ${computerScore}`;
+    roundWinner.textContent = "Rock Beats Scissors!";
+    playerPoints.textContent = `Player Score: ${playerScore}`;
+    computerPoints.textContent = `Computer Score: ${computerScore}`;
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
     playerScore += 1;
-    playerPoints.textContent = `Player: ${playerScore}`;
-    computerPoints.textContent = `Computer: ${computerScore}`;
+    roundWinner.textContent = "Scissors Beats Paper!";
+    playerPoints.textContent = `Player Score: ${playerScore}`;
+    computerPoints.textContent = `Computer Score: ${computerScore}`;
   } else {
     playerScore += 0;
     computerScore += 0;
-    playerPoints.textContent = `Player: ${playerScore}`;
-    computerPoints.textContent = `Computer: ${computerScore}`;
+    roundWinner.textContent = "Draw!";
+    playerPoints.textContent = `Player Score: ${playerScore}`;
+    computerPoints.textContent = `Computer Score: ${computerScore}`;
   }
 
   function checkWinner() {
@@ -90,4 +102,14 @@ function playRound(e) {
   checkWinner();
 }
 
-buttons.forEach((button) => button.addEventListener("click", playRound));
+buttons.forEach((button) =>
+  button.addEventListener("click", () => {
+    const player = button.dataset.value;
+    const computer = getComputerChoice();
+
+    gameStatus.textContent = "";
+
+    showChoices(player, computer);
+    playRound(player, computer);
+  })
+);
