@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DynaPuff&family=Righteous&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -63,7 +64,7 @@ h1,
   grid-column: 2/ 3;
   grid-row: 4 / 5;
   display: grid;
-  grid-template-columns: minmax(210px, 1fr) minmax(210px, 1fr);
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-items: center;
   font-family: "Righteous", cursive;

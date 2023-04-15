@@ -13,7 +13,7 @@ computerPoints.textContent = "Computer Score: 0";
 
 pointsContainer.appendChild(playerPoints);
 pointsContainer.appendChild(computerPoints);
-gameStatus.textContent = "5 Points Win! Click To start";
+gameStatus.textContent = "5 Points To Win! Click To start";
 let playerScore = 0;
 let computerScore = 0;
 let roundNumber = 0;
