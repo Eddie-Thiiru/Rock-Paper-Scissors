@@ -12,32 +12,34 @@ body {
   font-family: "DynaPuff", cursive;
   color: #f0f8fb;
   background-color: #0c1232;
+  text-align: center;
 }
 
 .container {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr minmax(520px, 5fr) 1fr;
+  grid-template-columns: minmax(320px, 5fr);
   grid-template-rows: 2fr 1fr 3fr 2fr 2fr;
   justify-items: center;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: clamp(3rem, 3.5vw, 4rem);
+  padding: 20px;
 }
 
-h1,
+
 .choices,
 .container,
 .game-points,
 .button-container {
-  padding: 25px;
+  padding: 10px;
 }
 
 .game-status,
 .game-points {
-  font-size: 1.5rem;
+  font-size: clamp(1.125rem, 1.25vw, 1.5rem);
 }
 
 .game-status,
@@ -46,29 +48,24 @@ h1,
   padding: 10px;
 }
 
-h1,
-.game-status {
-  grid-column: 2/ 3;
-}
 
 .button-container {
-  grid-column: 2 / 3;
   grid-row: 3 / 4;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   gap: 20px;
+  justify-content: center;
   align-items: center;
 }
 
 .choices {
-  grid-column: 2/ 3;
   grid-row: 4 / 5;
+  font-family: "Righteous", cursive;
+  color: chocolate;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: max-content max-content;
   grid-template-rows: 1fr 1fr;
   justify-items: center;
-  font-family: "Righteous", cursive;
-  color: #ed9a76;
+ 
 }
 
 .choices > div:nth-child(3) {
@@ -76,24 +73,26 @@ h1,
 }
 
 .game-points {
-  grid-column: 2/ 3;
   grid-row: 5 / 6;
-  display: grid;
-  grid-template-columns: minmax(250px, 1fr) minmax(250px, 1fr);
-  justify-items: center;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 button {
+  max-height: 160px;
+  max-width: 160px;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #0c1232;
-  height: 160px;
-  width: 160px;
+
 }
 
 img {
-  height: 150px;
-  width: 150px;
+  height: 90%;
+  width: 90%;
   padding: 10px;
 }
 
@@ -102,5 +101,5 @@ button:last-child > img {
 }
 
 button:hover {
-  background-color: #b1ccc5;
+  background-color: #1b2870;
 }
